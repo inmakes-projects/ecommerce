@@ -1,0 +1,39 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'shop:index' %}">ABC Electronics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'shop:index' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Shop
+              </a>
+              <ul class="dropdown-menu">
+                {% for link in links %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ link.get_url }}">{{ link.name }}</a>
+                  </li>  
+                {% endfor %}
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'cart:details' %}"><i class="fa fa-shopping-cart"></i>
+                {% if items_count > 0 %}({{items_count}}){% endif %}
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search" action="{% url 'search:results' %}" method='GET'>
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='q' value={{request.GET.q}} />
+            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+    </nav>
+</header>
