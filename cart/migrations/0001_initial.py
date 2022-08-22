@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('shop', '0002_alter_product_options_alter_category_description_and_more'),
+       
     ]
 
     operations = [

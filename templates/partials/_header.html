@@ -30,7 +30,7 @@
           </ul>
           <form class="d-flex" role="search" action="{% url 'search:results' %}" method='GET'>
             {% csrf_token %}
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='q' value={{request.GET.q}} />
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='q' />
             <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
